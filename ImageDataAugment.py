@@ -8,7 +8,7 @@ np.random.seed(3)
 
 from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
 
-data_datagen = ImageDataGenerator(rescale=1. / 255)
+# data_datagen = ImageDataGenerator(rescale=1. / 255)
 
 data_datagen = ImageDataGenerator(rescale=1. / 255,
                                   rotation_range=5,

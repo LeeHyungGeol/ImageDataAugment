@@ -54,7 +54,7 @@ anno_dir = 'C:/data/annotations/'
 
 images, annotations = read_train_dataset(data_dir,anno_dir)
 
-for index in range(5): # 한장당 늘리려는 개수
+for index in range(3): # 한장당 늘리려는 개수
 
     for idx in range(len(images)):
         image = images[idx]
@@ -69,13 +69,13 @@ for index in range(5): # 한장당 늘리려는 개수
         # 이 옵션들이 다 랜덤 범위값으로 모두 랜덤하게 생겨서 한장을 복제함
         seq = iaa.Sequential([
             iaa.Fliplr(0.5),  # horizontally flip 50% of all images, 좌우반전 확률
-            iaa.Flipud(0.5),  # vertically flip 20% of all images, 상하반전 확률
-            iaa.LinearContrast((0.75, 1.5)), #대조 범위 약간 색감 찐하게하거나 흐리게 색을 변형
-            iaa.Multiply((0.8, 1.2), per_channel=0.2), #밝기 범위
+            # iaa.Flipud(0),  # vertically flip 20% of all images, 상하반전 확률
+            #  iaa.LinearContrast((0.75, 1.5)), #대조 범위 약간 색감 찐하게하거나 흐리게 색을 변형
+            #  iaa.Multiply((0.8, 1.2), per_channel=0.2), #밝기 범위
             iaa.Affine(
-                scale={"x": (0.9, 1.1), "y": (0.9, 1.1)}, #줌 아웃
-                translate_percent={"x": (-0.1, 0.1), "y": (-0.1, 0.1)}, #줌 아웃시 px 이동, scale이랑 같게줘야함
-                rotate=(-10, 10), # 회전 >> 이걸 크게주면 없어지는 이미지의 범위 있을수잇음, 모서리
+                scale={"x": (0.9, 1.1), "y": (0.9, 1.1)},  # 줌 아웃
+                translate_percent={"x": (-0.1, 0.1), "y": (-0.1, 0.1)},  # 줌 아웃시 px 이동, scale이랑 같게줘야함
+                rotate=(-3, 3),  # 회전 >> 이걸 크게주면 없어지는 이미지의 범위 있을수잇음, 모서리
                 # shear=(-20, 20)
             )
         ])
